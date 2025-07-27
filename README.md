@@ -1,4 +1,4 @@
-# 🎬 Video Library App (MERN Stack)
+# 🎬 PlayBuddy (Video Library MERN Stack App)
 
 A complete video management system using the MERN stack with custom numeric `category_id`. Includes secure authentication, a fully featured admin dashboard, and an interactive user interface.
 
