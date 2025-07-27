@@ -9,7 +9,7 @@
     "strict": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "rootDir": ".",  // <-- because everything is in root
+    "rootDir": ".",  
     "resolveJsonModule": true
   },
   "include": ["*.ts"],
