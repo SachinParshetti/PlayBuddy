@@ -9,9 +9,11 @@
     "strict": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "rootDir": ".",  
-    "resolveJsonModule": true
+    "rootDir": ".",
+    "resolveJsonModule": true,
+     "types": ["node"]
+    
   },
-  "include": ["*.ts"],
+  "include": ["*.ts", "**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }
