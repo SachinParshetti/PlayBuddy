@@ -7,7 +7,7 @@ A complete video management system using the MERN stack with custom numeric `cat
 ## 🚀 Live Demo
 
 - **Frontend (Netlify):** [https://your-netlify-app.netlify.app](https://your-netlify-app.netlify.app)
-- **Backend (Render):** [https://video-library-backend.onrender.com](https://video-library-backend.onrender.com)
+- **Backend (Render):** [https://video-library-backend.onrender.com](https://playbuddy.onrender.com)
 
 ---
 
