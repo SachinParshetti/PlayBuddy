@@ -1,0 +1,45 @@
+
+
+
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #7dd3fc, #6ee7b7, #fef3c7);
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+  
+}
+
+.appear {
+  animation: appear 2s ease-in-out;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+  
+  
+}
+
+@keyframes open {
+  0%{
+       transform: scale(0.2);
+  }
+  100%{
+    transform: scale(1.1);
+   
+   
+  }
+}
+
+.open {
+  animation: open 1s ease-in-out;
+}
