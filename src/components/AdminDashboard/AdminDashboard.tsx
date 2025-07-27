@@ -20,6 +20,7 @@ interface Video {
   category_id: number;
 }
 function AdminDashboard() {
+
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("videos");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -27,6 +28,7 @@ function AdminDashboard() {
   const [selectedVideo, setSelectedVideo] = useState <Video | undefined>();
   const [refresh, setRefresh] = useState(false)
   
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   // for updating video list after edited
   function handleRefresh()
@@ -50,7 +52,7 @@ function AdminDashboard() {
   function handleAddVideoSubmit(videoData: Video) {
     if (selectedVideo) {
       // Update existing video
-      axios.put(`http://localhost:4000/videos/${selectedVideo.video_id}`, videoData)
+      axios.put(`${BASE_URL}/${selectedVideo.video_id}`, videoData)
         .then(response => {
           toast.success("Video updated successfully");
           handleRefresh()
@@ -63,7 +65,7 @@ function AdminDashboard() {
         });
     } else {
       // Add new video
-      axios.post("http://localhost:4000/videos", videoData)
+      axios.post(`${BASE_URL}/videos`, videoData)
         .then((res) => {
           console.log("Video added:", res.data);
           toast.success("Video added successfully!");
@@ -83,7 +85,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/categories");
+        const response = await axios.get(`${BASE_URL}/categories`);
         setCategories(response.data.categories || []);
       } catch (error) {
         console.error("Failed to load categories", error);

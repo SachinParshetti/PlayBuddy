@@ -11,6 +11,7 @@ import { Form } from "formik";
 import { toast } from "react-toastify"
 import { Link } from "react-router-dom"
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 function UserRegister() {
 
     const navigate = useNavigate();
@@ -40,7 +41,7 @@ function UserRegister() {
 
     try
     {
-        const response = await axios.post("http://localhost:4000/users",userData);
+        const response = await axios.post(`${BASE_URL}/user/register`,userData);
         if(response.status === 200 || response.status === 201)
         {
             toast.success("User Registered Successfully");

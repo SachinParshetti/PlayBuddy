@@ -11,6 +11,8 @@ import { toast } from "react-toastify";
 import { Login, Password } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 function AdminLogin() {
     
     const validationSchema = yup.object({
@@ -24,7 +26,7 @@ function AdminLogin() {
       values: { admin_id: string, admin_password: string },
       { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
     ) {
-           axios.post("http://localhost:4000/admin/login",values)
+           axios.post(`${BASE_URL}/admin/login`,values)
            .then((res)=>{
               
                   if(res.status === 200 && res.data.token)

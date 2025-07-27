@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const ManageUsers = () => {
   interface User {
     _id: string;
@@ -14,7 +16,7 @@ const ManageUsers = () => {
 
   const getUsers = () => {
     axios
-      .get("http://localhost:4000/users")
+      .get(`${BASE_URL}/users`)
       .then((response) => setUsers(response.data.users))
       .catch((error) => {
         console.error(error);
@@ -39,7 +41,7 @@ const ManageUsers = () => {
 
   if (result.isConfirmed) {
     try {
-      await axios.delete(`http://localhost:4000/users/${userId}`);
+      await axios.delete(`${BASE_URL}/users/${userId}`);
       Swal.fire('Deleted!', 'User has been removed.', 'success');
       getUsers(); 
     } catch (error) {

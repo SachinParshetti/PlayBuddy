@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const ManageCategories = () => {
   interface Category {
     category_id: number;
@@ -15,7 +16,7 @@ const ManageCategories = () => {
 
   const getCategories = () => {
     axios
-      .get("http://localhost:4000/categories")
+      .get(`${BASE_URL}/categories`)
       .then((response) => setCategories(response.data.categories))
       .catch((error) => {
         console.error(error);
@@ -38,7 +39,7 @@ const ManageCategories = () => {
     }
 
     axios
-      .post("http://localhost:4000/categories", newCategory)
+      .post(`${BASE_URL}/categories`, newCategory)
       .then(() => {
         toast.success("Category added");
         setNewCategory(null);
@@ -73,7 +74,7 @@ const ManageCategories = () => {
     if (!updatedCategory) return;
 
     axios
-      .put(`http://localhost:4000/categories/${id}`, updatedCategory)
+      .put(`${BASE_URL}/categories/${id}`, updatedCategory)
       .then(() => {
         toast.success("Category updated");
         setEditingCategoryId(null);
@@ -97,7 +98,7 @@ const ManageCategories = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:4000/categories/${id}`)
+          .delete(`${BASE_URL}/${id}`)
           .then(() => {
             Swal.fire("Deleted!", "Category has been deleted.", "success");
             getCategories();

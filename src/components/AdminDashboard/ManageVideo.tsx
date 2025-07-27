@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import DeleteIcon from '@mui/icons-material/Delete';
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const ManageVideos = ({ onEdit , refreshFlag}) => {   
   interface Video {
     _id: string;
@@ -30,7 +32,7 @@ const ManageVideos = ({ onEdit , refreshFlag}) => {
  
   const getVideos = async () => {
     try {
-      const res = await axios.get('http://localhost:4000/videos');
+      const res = await axios.get(`${BASE_URL}/videos`);
       setVideos(res.data.videos || []);
     } catch (error) {
       console.error("Error fetching videos:", error);
@@ -41,7 +43,7 @@ const ManageVideos = ({ onEdit , refreshFlag}) => {
 
   const getCategories = async () => {
     try {
-      const res = await axios.get('http://localhost:4000/categories');
+      const res = await axios.get(`${BASE_URL}/categories`);
       setCategories(res.data.categories || []);
     
     } catch (error) {
@@ -64,7 +66,7 @@ const ManageVideos = ({ onEdit , refreshFlag}) => {
 
   if (result.isConfirmed) {
     try {
-      await axios.delete(`http://localhost:4000/videos/${videoId}`);
+      await axios.delete(`${BASE_URL}/videos/${videoId}`);
       Swal.fire('Deleted!', 'Video has been deleted.', 'success');
       getVideos(); 
     } catch (error) {

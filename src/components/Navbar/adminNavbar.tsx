@@ -20,7 +20,7 @@ function AdminNavbar({ activeTab, setActiveTab, handleSignOut }) {
 
   return (
     <nav className="relative">
-      {/* Toggle button for mobile */}
+     
       <div className="md:hidden flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold text-gray-700">Menu</h2>
         <button
@@ -31,7 +31,6 @@ function AdminNavbar({ activeTab, setActiveTab, handleSignOut }) {
         </button>
       </div>
 
-      {/* Tabs - visible always on desktop, toggled on mobile */}
       <div
         className={`flex flex-col md:flex-row gap-4 md:gap-6 border-b md:border-0 md:items-center transition-all duration-300
           ${isMenuOpen ? "block" : "hidden md:flex"}`}
@@ -49,7 +48,7 @@ function AdminNavbar({ activeTab, setActiveTab, handleSignOut }) {
           </button>
         ))}
 
-        {/* Logout Button (only visible inside the menu on mobile, always on desktop) */}
+     
         <div className="mt-4 md:mt-0 md:ml-auto">
           <button
             onClick={handleSignOut}

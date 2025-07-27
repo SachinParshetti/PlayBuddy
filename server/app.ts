@@ -9,7 +9,10 @@ import cors from "cors";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://your-netlify-site.netlify.app'],
+  credentials: true,
+}));
 
 app.use("/categories",CategoryRoutes);
 app.use("/videos",videoRoutes);

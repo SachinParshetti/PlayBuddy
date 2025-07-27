@@ -12,7 +12,7 @@ import {toast} from "react-toastify"
 import { Link } from "react-router-dom"
 import LoginIcon from '@mui/icons-material/Login';
 
-
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const UserLogin = () => {
   const navigate = useNavigate()
   const { loginWithRedirect } = useAuth0();
@@ -24,7 +24,7 @@ const UserLogin = () => {
   async function handleLogin(values: {username: string, password: string}) {
     try {
       console.log(values)
-      const res = await axios.post("http://localhost:4000/users/login", values)
+      const res = await axios.post(`${BASE_URL}/user/login`, values)
       
       if(res.status===200 && res.data.token) {
         localStorage.setItem("token", res.data.token)

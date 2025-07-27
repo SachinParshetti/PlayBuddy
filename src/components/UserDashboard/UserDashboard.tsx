@@ -30,6 +30,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import { addToWatchLater, removeFromWatchLater } from "../../Redux/WatchLater-Slice";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const UserDashboard = () => {
   const { logout } = useAuth0();
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const UserDashboard = () => {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [videos, setVideos] = useState<any[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>(""); // New state for search input
+  const [searchQuery, setSearchQuery] = useState<string>(""); 
   const [likedVideos, setLikedVideos] = useState<{ [key: string]: boolean }>(() => {
     const userId = localStorage.getItem("userId");
     return userId ? JSON.parse(localStorage.getItem(`likedVideos_${userId}`) || "{}") : {};
@@ -127,7 +128,7 @@ const UserDashboard = () => {
   async function showVideos() {
     setIsLoading(true);
     try {
-      const response: any = await axios.get("http://localhost:4000/videos");
+      const response: any = await axios.get(`${BASE_URL}/videos`);
       if (response.status === 200) {
         setVideos(response.data.videos);
         const initialLikeCounts: { [key: string]: number } = {};
@@ -178,7 +179,7 @@ const UserDashboard = () => {
     setLikeCounts(prev => ({ ...prev, [video._id]: newLikeCount }));
 
     try {
-      await axios.put(`http://localhost:4000/videos/${video.video_id}`, {
+      await axios.put(`${BASE_URL}/videos/${video.video_id}`, {
         video_id: video.video_id,
         title: video.title,
         description: video.description,
@@ -221,7 +222,7 @@ const UserDashboard = () => {
           return newLiked;
         });
         try {
-          axios.put(`http://localhost:4000/videos/${video.video_id}`, {
+          axios.put(`${BASE_URL}/videos/${video.video_id}`, {
             video_id: video.video_id,
             title: video.title,
             description: video.description,
