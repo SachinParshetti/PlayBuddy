@@ -26,7 +26,7 @@ function UserRegister() {
     username:yup.string().required("User name is required"),
     email:yup.string().email("Please enter email in correct format").required("Email is required"),
     password:yup.string().matches(/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).{6,}$/, "password much match (ex.Example@123) this format").required('Password is required '),
-    mobile:yup.string().matches(/^\d{10}$/,"Mobile number must be in (ex: +91 7019390002) format").required("Mobile number is reqired")
+    mobile:yup.string().matches(/^\d{10}$/,"Mobile number must be in (ex: 1234567890) format").required("Mobile number is reqired")
 
   })
 
