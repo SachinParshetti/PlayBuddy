@@ -52,7 +52,7 @@ function AdminDashboard() {
   function handleAddVideoSubmit(videoData: Video) {
     if (selectedVideo) {
       // Update existing video
-      axios.put(`${BASE_URL}/${selectedVideo.video_id}`, videoData)
+      axios.put(`${BASE_URL}/videos/${selectedVideo.video_id}`, videoData)
         .then(response => {
           toast.success("Video updated successfully");
           handleRefresh()
