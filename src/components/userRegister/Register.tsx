@@ -41,7 +41,7 @@ function UserRegister() {
 
     try
     {
-        const response = await axios.post(`${BASE_URL}/user/register`,userData);
+        const response = await axios.post(`${BASE_URL}/users/register`,userData);
         if(response.status === 200 || response.status === 201)
         {
             toast.success("User Registered Successfully");

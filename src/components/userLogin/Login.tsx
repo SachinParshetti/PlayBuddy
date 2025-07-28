@@ -24,7 +24,7 @@ const UserLogin = () => {
   async function handleLogin(values: {username: string, password: string}) {
     try {
       console.log(values)
-      const res = await axios.post(`${BASE_URL}/user/login`, values)
+      const res = await axios.post(`${BASE_URL}/users/login`, values)
       
       if(res.status===200 && res.data.token) {
         localStorage.setItem("token", res.data.token)
