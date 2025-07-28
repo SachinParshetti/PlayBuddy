@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://your-netlify-site.netlify.app'],
+  origin: ['http://localhost:5174', 'https://playbuddys.netlify.app'],
   credentials: true,
 }));
 

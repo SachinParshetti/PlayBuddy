@@ -11,7 +11,7 @@ const Callback = () => {
       localStorage.setItem("LoginType","social")
       localStorage.setItem("socialUser",JSON.stringify(user))
       navigate("/user-dashboard");
-      console.log(`userName:${user?.name}\nEmail:${user?.email}`)
+    
 
     } else if (error) {
       console.error("Auth0 error:", error.message);
