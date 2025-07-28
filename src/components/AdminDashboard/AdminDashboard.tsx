@@ -7,6 +7,7 @@ import ManageUsers from "./ManageUsers";
 import ManageCategories from "./ManageCategories";
 import AddVideoModal from "./Modal"; 
 import { toast } from "react-toastify";
+import { set } from "react-hook-form";
 
 
 
@@ -54,6 +55,7 @@ function AdminDashboard() {
       // Update existing video
       axios.put(`${BASE_URL}/videos/${selectedVideo.video_id}`, videoData)
         .then(response => {
+          setActiveTab("videos");
           toast.success("Video updated successfully");
           handleRefresh()
         })
@@ -69,13 +71,14 @@ function AdminDashboard() {
         .then((res) => {
           console.log("Video added:", res.data);
           toast.success("Video added successfully!");
+          handleRefresh()
         })
         .catch((error) => {
           console.error("Error adding video:", error);
           toast.error("Failed to add video. Please try again.");
         });
     }
-
+      
     setIsAddModalOpen(false);                                
     setSelectedVideo(undefined);
      setActiveTab("videos");   
