@@ -171,7 +171,7 @@ function UserRegister() {
                                         variant="contained"
                                         className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white px-4 py-2 rounded-full shadow-lg hover:scale-105 transition w-full my-4"
                                     >
-                                        {isSubmitting ? 'Logging in...' : 'Login'}
+                                        {isSubmitting ? 'Registering in...' : 'Register'}
                                     </Button>
                                 </Form>
                             )}
